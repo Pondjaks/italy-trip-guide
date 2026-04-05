@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>🎬 Italy Shooting Guide — Gear + Lens Cheat Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0c0c14;--card:#14142a;--card2:#1c1c38;
+  --amber:#e8a94a;--amber-dim:#b07830;
+  --cyan:#4ac8e8;--cyan-dim:#2a7888;
+  --rose:#e85a6a;--rose-dim:#a03040;
+  --green:#4ae874;--green-dim:#2a8844;
+  --white:#f0eee8;--dim:#8a8680;
+  --border:rgba(232,169,74,.12);
+  --r:10px;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--white);line-height:1.6;padding-bottom:72px;-webkit-font-smoothing:antialiased}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* HEADER */
+.hdr{padding:48px 16px 24px;text-align:center;border-bottom:1px solid var(--border)}
+.hdr h1{font-size:1.5rem;font-weight:700;color:var(--amber);margin-bottom:4px}
+.hdr p{font-size:.82rem;color:var(--dim);max-width:400px;margin:0 auto}
+
+/* GEAR SETUP */
+.gear{padding:16px;margin:8px 12px;background:var(--card);border:1px solid var(--border);border-radius:var(--r)}
+.gear h2{font-size:.9rem;font-weight:600;color:var(--amber);margin-bottom:10px}
+.gear-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.gear-item{padding:8px 10px;background:var(--card2);border-radius:8px;font-size:.72rem}
+.gear-item .label{color:var(--dim);font-size:.65rem;text-transform:uppercase;letter-spacing:.5px}
+.gear-item .val{color:var(--white);font-weight:600;margin-top:2px}
+.gear-note{margin-top:10px;padding:8px 10px;background:rgba(74,200,232,.06);border-left:3px solid var(--cyan);border-radius:0 6px 6px 0;font-size:.72rem;color:var(--cyan);line-height:1.6}
+
+/* DAY BLOCK */
+.day{margin:10px 12px;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;background:var(--card)}
+.day-top{padding:14px;cursor:pointer;display:flex;align-items:center;gap:10px;-webkit-user-select:none;user-select:none}
+.day-top:active{background:rgba(232,169,74,.06)}
+.day-badge{flex-shrink:0;width:40px;height:40px;background:linear-gradient(135deg,var(--amber),var(--amber-dim));border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.95rem;color:var(--bg)}
+.day-top h3{flex:1;font-size:.92rem;font-weight:600;color:var(--white);line-height:1.3}
+.day-top .meta{font-size:.7rem;color:var(--dim);margin-top:2px}
+.chev{flex-shrink:0;width:18px;height:18px;color:var(--dim);transition:transform .3s}
+.day.open .chev{transform:rotate(180deg)}
+.day-body{max-height:0;overflow:hidden;transition:max-height .4s}
+.day.open .day-body{max-height:none}
+.day-inner{padding:0 14px 14px}
+
+/* SPOT */
+.spot{margin-bottom:12px;padding:12px;background:var(--card2);border-radius:8px;border-left:3px solid var(--amber)}
+.spot.video-priority{border-left-color:var(--rose)}
+.spot.both-priority{border-left-color:var(--green)}
+.spot-name{font-size:.85rem;font-weight:600;color:var(--white);margin-bottom:2px}
+.spot-time{font-size:.7rem;color:var(--dim);margin-bottom:8px}
+
+/* TYPE BADGES */
+.types{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.type{padding:3px 8px;border-radius:4px;font-size:.65rem;font-weight:600;display:inline-flex;align-items:center;gap:3px}
+.type.photo{background:rgba(232,169,74,.12);color:var(--amber)}
+.type.video{background:rgba(232,90,106,.12);color:var(--rose)}
+.type.vlog{background:rgba(74,232,116,.12);color:var(--green)}
+
+/* GEAR ROW */
+.gear-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px}
+.gr{padding:6px 8px;border-radius:6px;font-size:.68rem;line-height:1.5}
+.gr.body-a{background:rgba(74,200,232,.08);border:1px solid rgba(74,200,232,.15);color:var(--cyan)}
+.gr.body-z{background:rgba(232,90,106,.08);border:1px solid rgba(232,90,106,.15);color:var(--rose)}
+.gr .b-label{font-size:.6rem;text-transform:uppercase;letter-spacing:.4px;opacity:.7}
+.gr .b-lens{font-weight:600;margin-top:1px}
+
+/* SHOT LIST */
+.shots{font-size:.75rem;color:var(--dim);line-height:1.7}
+.shots strong{color:var(--white);font-weight:500}
+.shot-item{padding:4px 0;border-bottom:1px solid rgba(255,255,255,.03)}
+.shot-item:last-child{border-bottom:none}
+.shot-icon{margin-right:4px}
+
+/* TIP */
+.tip{margin-top:6px;padding:6px 8px;background:rgba(232,169,74,.05);border-radius:6px;font-size:.7rem;color:var(--amber-dim);line-height:1.5}
+.tip strong{color:var(--amber)}
+
+/* BOTTOM NAV */
+.bnav{position:fixed;bottom:0;left:0;right:0;background:rgba(12,12,20,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:6px 8px calc(6px + env(safe-area-inset-bottom));z-index:100;display:flex;overflow-x:auto;gap:2px;-webkit-overflow-scrolling:touch}
+.bnav::-webkit-scrollbar{display:none}
+.nb{flex-shrink:0;padding:6px 10px;border-radius:6px;font-size:.65rem;font-weight:600;color:var(--dim);background:none;border:none;cursor:pointer;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.nb:active,.nb.on{background:rgba(232,169,74,.12);color:var(--amber)}
+
+@media(min-width:768px){body{max-width:700px;margin:0 auto}.gear-grid{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+<h1>🎬 Italy Shooting Guide</h1>
+<p>Photo + Video Cheat Sheet — เลนส์ + Body + Shot List ทุกจุด<br>ใช้คู่กับ Photo Guide (HTML แยก)</p>
+</header>
+
+<!-- GEAR SETUP -->
+<div class="gear" id="gear">
+<h2>📷 Gear Setup — Default Configuration</h2>
+<div class="gear-grid">
+<div class="gear-item"><div class="label">Body A — Photo</div><div class="val">Sony A7V</div></div>
+<div class="gear-item"><div class="label">Body Z — Video/Vlog</div><div class="val">Sony ZV-E1</div></div>
+<div class="gear-item"><div class="label">Default on A7V</div><div class="val">24-70 f/2.8 GM</div></div>
+<div class="gear-item"><div class="label">Default on ZV-E1</div><div class="val">16mm f/1.8</div></div>
+</div>
+<div class="gear-note">
+<strong>🎯 Swap Strategy:</strong> ZV-E1+16mm ติดตัวตลอด = vlog + wide B-roll พร้อมถ่ายทันที<br>
+A7V สลับเลนส์ตามจุด: 24-70 (default) → 35/50 (street/portrait) → 70-200 (landscape compress)<br>
+<strong>🎤 Audio:</strong> ECM-W3 ติด ZV-E1 สำหรับ vlog segments
+</div>
+</div>
+
+<!-- ============ DAY 2 ============ -->
+<section class="day" id="d2">
+<div class="day-top" onclick="this.parentElement.classList.toggle('open')">
+<div class="day-badge">D2</div>
+<div><h3>Ligurian Coast</h3><div class="meta">9 เม.ย. — Santa Margherita · Portofino · Genoa</div></div>
+<svg class="chev" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+</div>
+<div class="day-body"><div class="day-inner">
+
+<div class="spot both-priority">
+<div class="spot-name">📍 Santa Margherita Ligure — Marina</div>
+<div class="spot-time">⏰ ~10:30-12:00 (1.5 ชม.) | แสงสายสว่าง</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type video">🎬 B-roll</span><span class="type vlog">🎙 Vlog</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V</div><div class="b-lens">24-70mm → เก็บ marina + ตึก pastel</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1</div><div class="b-lens">16mm → vlog arrival + walk-in + wide marina</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> เงาสะท้อนตึก pastel ในน้ำ marina / เรือสีสด foreground</div>
+<div class="shot-item"><span class="shot-icon">🎬</span> <strong>B-roll:</strong> Slow walk ริม marina / เรือแกว่งในน้ำ / ร้านค้าเปิดประตู</div>
+<div class="shot-item"><span class="shot-icon">🎙</span> <strong>Vlog:</strong> "เพิ่งถึงอิตาลี! เมืองแรกคือ…" — opening shot ของทริป</div>
+</div>
+<div class="tip"><strong>💡 Tip:</strong> จุดนี้เป็น OPENING ของทริป → ถ่าย vlog intro ให้ดี เดินเข้า marina กล้อง ZV-E1 ถือเดิน + ECM-W3</div>
+</div>
+
+<div class="spot both-priority">
+<div class="spot-name">📍 Portofino — Harbor (จากเรือ + บนฝั่ง)</div>
+<div class="spot-time">⏰ ~12:30-15:00 (2.5 ชม.) | แสงบ่ายต้น — ตึกได้แสงดี</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type video">🎬 B-roll</span><span class="type vlog">🎙 Vlog</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V — บนเรือ</div><div class="b-lens">70-200mm → compress harbor facades<br>แล้วสลับ 35mm f/1.4 → street บนฝั่ง</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1</div><div class="b-lens">16mm → vlog บนเรือ approach + wide harbor</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo (เรือ):</strong> Harbor approach 2-3 นาทีก่อนเทียบท่า → 70-200 compress ตึกสี = MONEY SHOT</div>
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo (ฝั่ง):</strong> Piazzetta archway frame harbor / Chiesa San Giorgio viewpoint มุมสูง</div>
+<div class="shot-item"><span class="shot-icon">🎬</span> <strong>B-roll:</strong> เรือตัดน้ำ / คลื่นกระทบเรือสี / ร่มคาเฟ่ริมน้ำ / เดินซอยแคบ</div>
+<div class="shot-item"><span class="shot-icon">🎙</span> <strong>Vlog:</strong> บนเรือขาเข้า "กำลังเข้า Portofino…" — dramatic reveal</div>
+</div>
+<div class="tip"><strong>💡 Tip:</strong> ⭐ บนเรือ = โอกาสเดียว! เตรียม A7V+70-200 ไว้ก่อนเรือออก ถ่ายต่อเนื่องขณะ approach ห้ามพลาด</div>
+</div>
+
+<div class="spot">
+<div class="spot-name">📍 Genoa — Porto Antico + Casa di Colombo</div>
+<div class="spot-time">⏰ ~16:30-19:00 (2.5 ชม.) | Golden hour 18:43+ ⭐</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type video">🎬 B-roll</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V</div><div class="b-lens">24-70mm → old port + ซอยเมืองเก่า<br>35mm f/1.4 → caruggi (ซอยแคบ)</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1</div><div class="b-lens">16mm → walk through ซอย caruggi</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> Golden hour บนตึกเก่า old port / ซุ้มประตู Casa di Colombo</div>
+<div class="shot-item"><span class="shot-icon">🎬</span> <strong>B-roll:</strong> เดินผ่านซอย caruggi แสงลอดเข้ามา / old port เย็น</div>
+</div>
+<div class="tip"><strong>💡 Golden hour 18:43!</strong> ถ้าถึง old port ก่อน → เก็บ B-roll ไว้ก่อน แล้วรอแสงทองถ่าย photo จริงจัง</div>
+</div>
+
+</div></div>
+</section>
+
+<!-- ============ DAY 3 ============ -->
+<section class="day" id="d3">
+<div class="day-top" onclick="this.parentElement.classList.toggle('open')">
+<div class="day-badge">D3</div>
+<div><h3>Cinque Terre</h3><div class="meta">10 เม.ย. — 5 หมู่บ้านริมผา + รถไฟ</div></div>
+<svg class="chev" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+</div>
+<div class="day-body"><div class="day-inner">
+
+<div class="spot both-priority">
+<div class="spot-name">📍 Vernazza — Hiking Trail Viewpoint</div>
+<div class="spot-time">⏰ ~11:00-12:30 | ⭐ TOP 1 SHOT ของทริป!</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type video">🎬 B-roll</span><span class="type vlog">🎙 Vlog</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V — สลับ 2 เลนส์</div><div class="b-lens">24-70mm → wide หมู่บ้าน<br>70-200mm → compress ตึกสี+ทะเล</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1</div><div class="b-lens">16mm → vlog เดินขึ้นเขา + reveal shot</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> เดินขึ้น 10 นาที → วิวทั้งหมู่บ้าน harbor หอระฆัง (70-200 compress สวยมาก)</div>
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> ระดับน้ำ harbor — เรือประมง foreground + โบสถ์ (35mm)</div>
+<div class="shot-item"><span class="shot-icon">🎬</span> <strong>B-roll:</strong> เดินขึ้นเขา → slow pan reveal หมู่บ้าน / คลื่นกระทบหิน / เรือในอ่าว</div>
+<div class="shot-item"><span class="shot-icon">🎙</span> <strong>Vlog:</strong> เดินขึ้น "คุ้มค่าทุกก้าว!" — reveal moment ตอนเห็นวิว</div>
+</div>
+<div class="tip"><strong>⚠️ ต้องเดินขึ้นเขา 10 นาที!</strong> เตรียม A7V+70-200 ไว้ในกระเป๋า สลับเลนส์บนจุดชมวิว รองเท้ากันลื่น!</div>
+</div>
+
+<div class="spot both-priority">
+<div class="spot-name">📍 Manarola — Nessun Dorma Viewpoint</div>
+<div class="spot-time">⏰ ~14:00-15:30 | บ่าย แสงอุ่นเริ่ม</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type video">🎬 B-roll</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V</div><div class="b-lens">24-70mm → wide หมู่บ้านลดหลั่น<br>70-200mm → telephoto detail ตึกสี</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1</div><div class="b-lens">16mm → wide B-roll + timelapse ถ้ามีเวลา</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> ตึก pastel ลดหลั่นหน้าผาสู่ทะเล = Instagram classic</div>
+<div class="shot-item"><span class="shot-icon">🎬</span> <strong>B-roll:</strong> Slow pan จากทะเลขึ้นหมู่บ้าน / คลื่นซัดหิน / timelapse เมฆ</div>
+</div>
+<div class="tip"><strong>💡 Sunset ที่ดีที่สุดใน CT (18:45+)</strong> — ถ้าปรับเวลาได้ ลองรอ golden hour ที่ Manarola</div>
+</div>
+
+<div class="spot">
+<div class="spot-name">📍 Riomaggiore + Via dell'Amore</div>
+<div class="spot-time">⏰ ~13:00-14:00 (แวะสั้น) + ป้าย Via dell'Amore</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type vlog">🎙 Vlog</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V</div><div class="b-lens">16mm (สลับจาก ZV-E1 ถ้าต้องการ) → dramatic cliffside</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1</div><div class="b-lens">16mm → vlog สั้น + selfie กับป้าย Via dell'Amore</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> Harbor rocks มองขึ้นหมู่บ้าน (ระวังหินลื่น!)</div>
+<div class="shot-item"><span class="shot-icon">🎙</span> <strong>Vlog:</strong> ป้าย Via dell'Amore — selfie/portrait สั้น Instagram moment</div>
+</div>
+</div>
+
+</div></div>
+</section>
+
+<!-- ============ DAY 4 ============ -->
+<section class="day" id="d4">
+<div class="day-top" onclick="this.parentElement.classList.toggle('open')">
+<div class="day-badge">D4</div>
+<div><h3>Lucca + Florence</h3><div class="meta">11 เม.ย. — กำแพงโรมัน · Duomo · Ponte Vecchio</div></div>
+<svg class="chev" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+</div>
+<div class="day-body"><div class="day-inner">
+
+<div class="spot">
+<div class="spot-name">📍 Lucca — City Walls + Piazza dell'Anfiteatro</div>
+<div class="spot-time">⏰ ~09:30-12:00 (2.5 ชม.) | แสงเช้าอุ่น</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type video">🎬 B-roll</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V</div><div class="b-lens">24-70mm → กำแพง perspective + Anfiteatro<br>50mm f/1.2 → cathedral detail + bokeh street</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1</div><div class="b-lens">16mm → เดินบนกำแพง + vlog Anfiteatro</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> ทางเดินต้นไม้เรียงบนกำแพง leading line / จัตุรัสวงรี Anfiteatro จากพื้น</div>
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> เสาสลักเกลียว San Martino Cathedral → 50mm f/1.2 bokeh detail</div>
+<div class="shot-item"><span class="shot-icon">🎬</span> <strong>B-roll:</strong> เดินบนกำแพงเมือง / ปั่นจักรยาน POV / เข้าซุ้ม Anfiteatro</div>
+</div>
+</div>
+
+<div class="spot both-priority">
+<div class="spot-name">📍 Florence — Duomo + Ponte Vecchio</div>
+<div class="spot-time">⏰ ~14:00-20:00+ (6+ ชม. ดินเนอร์อิสระ!) | ⭐ Golden hour 18:46-19:46</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type video">🎬 B-roll</span><span class="type vlog">🎙 Vlog</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V — สลับตามจุด</div><div class="b-lens">24-70mm → Duomo (ต้อง wide!)<br>50mm f/1.2 → street Florence + Ponte Vecchio portrait<br>35mm f/1.4 → Uffizi corridor frame</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1</div><div class="b-lens">16mm → Duomo ข้างใน (ultra wide จำเป็น!) + vlog เดินเมือง</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo (Duomo):</strong> Facade หินอ่อน 3 สี — ZV-E1+16mm เก็บทั้งตึก (แคบมาก) / A7V+24-70 detail</div>
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo (Ponte Vecchio):</strong> ⭐ จาก Ponte Santa Trinita → 50mm f/1.2 golden hour = TOP 2 SHOT ของทริป!</div>
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo (Uffizi):</strong> Corridor frame tower → 35mm f/1.4 / Archway สู่ Arno</div>
+<div class="shot-item"><span class="shot-icon">🎬</span> <strong>B-roll:</strong> เงาสะท้อน Ponte Vecchio ใน Arno / Piazza Signoria sculptures / เดินซอยเก่า</div>
+<div class="shot-item"><span class="shot-icon">🎙</span> <strong>Vlog:</strong> ดินเนอร์อิสระ → เดิน Florence ตอนค่ำ vlog บรรยากาศ</div>
+</div>
+<div class="tip"><strong>⭐ MUST: อยู่ที่ Ponte Santa Trinita ก่อน 18:30!</strong> A7V+50mm f/1.2 → Ponte Vecchio เรืองทอง+สะท้อน Arno = postcard shot ห้ามพลาดเด็ดขาด</div>
+</div>
+
+</div></div>
+</section>
+
+<!-- ============ DAY 5 ============ -->
+<section class="day" id="d5">
+<div class="day-top" onclick="this.parentElement.classList.toggle('open')">
+<div class="day-badge">D5</div>
+<div><h3>Tuscany Hill Towns</h3><div class="meta">12 เม.ย. — San Gimignano · Siena · Montepulciano · วิว Tuscany</div></div>
+<svg class="chev" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+</div>
+<div class="day-body"><div class="day-inner">
+
+<div class="spot">
+<div class="spot-name">📍 San Gimignano — Medieval Towers</div>
+<div class="spot-time">⏰ ~09:30-11:30 (2 ชม.) | แสงเช้าอุ่นบนหอคอย</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type video">🎬 B-roll</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V</div><div class="b-lens">70-200mm → skyline หอคอย+เนินเขาจาก parking<br>50mm f/1.2 → Gelateria Dondoli food + จัตุรัส</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1</div><div class="b-lens">16mm → เดินเข้าเมืองเก่า + vlog</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> Skyline จากนอกเมือง → 70-200mm compress หอคอย+เนินเขียว Tuscan</div>
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> เจลาโต้ Dondoli + หอคอยหลัง → 50mm f/1.2 food bokeh</div>
+<div class="shot-item"><span class="shot-icon">🎬</span> <strong>B-roll:</strong> Pan ขึ้นหอคอย / เดินซอยหิน / เจลาโต้ close-up</div>
+</div>
+</div>
+
+<div class="spot">
+<div class="spot-name">📍 Siena — Piazza del Campo</div>
+<div class="spot-time">⏰ ~12:00-15:00 (3 ชม.) | แสงกลางวัน → เงาสวยบนรูปพัด</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type video">🎬 B-roll</span><span class="type vlog">🎙 Vlog</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V</div><div class="b-lens">24-70mm wide → Campo รูปเปลือกหอย<br>70-200mm → Torre del Mangia + Duomo marble</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1</div><div class="b-lens">16mm → ultra wide Campo + vlog ใน piazza</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> ยืนจุดสูงสุด (Via di Città) ถ่ายลง → รูปเปลือกหอย + Torre (16mm!)</div>
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> Duomo หินอ่อนขาว-ดำ → 70-200mm detail marble</div>
+<div class="shot-item"><span class="shot-icon">🎬</span> <strong>B-roll:</strong> Slow pan Campo / คนนั่งบนพื้นรูปพัด / marble detail Duomo</div>
+<div class="shot-item"><span class="shot-icon">🎙</span> <strong>Vlog:</strong> นั่งกลาง Campo "จัตุรัสรูปเปลือกหอย Palio…"</div>
+</div>
+</div>
+
+<div class="spot both-priority">
+<div class="spot-name">📍 Tuscan Countryside — Cypress Roads (ระหว่างทาง)</div>
+<div class="spot-time">⏰ ~15:00-16:30 | ⭐ TOP 5 SHOT! แสงบ่ายทอง</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type video">🎬 B-roll</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V ⭐</div><div class="b-lens">70-200mm → compress เลเยอร์เนินเขา = THE Tuscany shot<br>24-70mm → cypress road leading lines</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1</div><div class="b-lens">16mm → wide landscape + drive-through video</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> ถนน cypress เรียง + rolling hills → 70-200mm ที่ 120-150mm สุดยอด!</div>
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> ฟาร์มโดดเดี่ยวบนเนิน → 200mm compress เลเยอร์เขียว-ทอง</div>
+<div class="shot-item"><span class="shot-icon">🎬</span> <strong>B-roll:</strong> ขับผ่าน cypress road / pan เนินเขาลดหลั่น / ลมพัด wheat</div>
+</div>
+<div class="tip"><strong>⚠️ ขอคนขับหยุดเมื่อเห็น composition ดี!</strong> April = เนินเขียว + ป๊อปปี้เริ่มบาน สวยที่สุดในปี กล้องพร้อมตลอดทาง!</div>
+</div>
+
+<div class="spot">
+<div class="spot-name">📍 Montepulciano — Hilltop + Wine</div>
+<div class="spot-time">⏰ ~16:30-18:00 (1.5 ชม.) | แสงทองบ่ายแก่บนไร่องุ่น</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type vlog">🎙 Vlog</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V</div><div class="b-lens">24-70mm → panorama จาก Piazza Grande<br>50mm f/1.2 → wine tasting food shot</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1</div><div class="b-lens">16mm → vlog ชิมไวน์</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> วิว Val d'Orcia จากกำแพง + ไวน์แก้ว foreground</div>
+<div class="shot-item"><span class="shot-icon">🎙</span> <strong>Vlog:</strong> ชิม Vino Nobile di Montepulciano + วิว "Tuscany moment"</div>
+</div>
+</div>
+
+</div></div>
+</section>
+
+<!-- ============ DAY 6 ============ -->
+<section class="day" id="d6">
+<div class="day-top" onclick="this.parentElement.classList.toggle('open')">
+<div class="day-badge">D6</div>
+<div><h3>San Marino + Bologna</h3><div class="meta">13 เม.ย. — Three Towers · Porticos</div></div>
+<svg class="chev" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+</div>
+<div class="day-body"><div class="day-inner">
+
+<div class="spot both-priority">
+<div class="spot-name">📍 San Marino — Mount Titano Towers</div>
+<div class="spot-time">⏰ ~10:00-13:00 (3 ชม.) | ยอดเขา ลมแรง อาจมีเมฆ = dramatic!</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type video">🎬 B-roll</span><span class="type vlog">🎙 Vlog</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V</div><div class="b-lens">24-70mm → tower + landscape<br>70-200mm → Adriatic ไกล + tower detail</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1</div><div class="b-lens">16mm → dramatic wide fortress + vlog เดินสันเขา</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> Guaita → Cesta ตามสันเขา = iconic San Marino shot</div>
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> ถ้ามีเมฆต่ำ → หอคอยเหนือเมฆ = WORLD CLASS shot!</div>
+<div class="shot-item"><span class="shot-icon">🎬</span> <strong>B-roll:</strong> เดินสันเขาระหว่าง towers / ลมพัดเมฆ / panoramic pan</div>
+<div class="shot-item"><span class="shot-icon">🎙</span> <strong>Vlog:</strong> "ประเทศเล็กที่สุดในโลก บนยอดเขา…"</div>
+</div>
+<div class="tip"><strong>⚠️ ลมแรงมาก!</strong> ถือกล้องมั่น ZV-E1 เปิด SteadyShot Active สำหรับวิดีโอ | A7V ถ่ายรูป shutter เร็ว 1/500+</div>
+</div>
+
+<div class="spot">
+<div class="spot-name">📍 Bologna — Porticos + Piazza Maggiore</div>
+<div class="spot-time">⏰ ~15:30-19:00 | ⭐ Golden hour ลอดผ่าน portico arches!</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type video">🎬 B-roll</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V</div><div class="b-lens">24-70mm → portico perspective receding arches<br>35mm f/1.4 → atmospheric street</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1</div><div class="b-lens">16mm → dramatic wide portico + walk-through</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> ⭐ แสงทองลอดผ่าน portico arches → 16mm ultra wide dramatic!</div>
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> Due Torri เอียง → มองขึ้น ultra wide</div>
+<div class="shot-item"><span class="shot-icon">🎬</span> <strong>B-roll:</strong> เดินผ่าน portico แสง/เงาสลับ / Piazza Maggiore บ่ายแก่</div>
+</div>
+<div class="tip"><strong>💡 Golden hour ~18:48!</strong> แสงทองลอดผ่าน portico = signature Bologna ห้ามพลาด! อยู่ Strada Maggiore ช่วง 18:30+</div>
+</div>
+
+</div></div>
+</section>
+
+<!-- ============ DAY 7 ============ -->
+<section class="day" id="d7">
+<div class="day-top" onclick="this.parentElement.classList.toggle('open')">
+<div class="day-badge">D7</div>
+<div><h3>Dolomites</h3><div class="meta">14 เม.ย. — Bassano del Grappa · Cortina d'Ampezzo ❄️</div></div>
+<svg class="chev" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+</div>
+<div class="day-body"><div class="day-inner">
+
+<div class="spot">
+<div class="spot-name">📍 Bassano del Grappa — Ponte degli Alpini</div>
+<div class="spot-time">⏰ ~10:00-12:00 (2 ชม.) | แสงเช้า สะพานไม้+ภูเขาหิมะหลัง</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type video">🎬 B-roll</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V</div><div class="b-lens">24-70mm → สะพาน+สะท้อนน้ำ จากริมฝั่งตะวันออก<br>50mm f/1.2 → bridge detail + เมืองเก่า</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1</div><div class="b-lens">16mm → เดินข้ามสะพาน POV + vlog</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> สะพานไม้+เงาสะท้อน Brenta จากฝั่งตะวันออก + Alps หิมะหลัง</div>
+<div class="shot-item"><span class="shot-icon">🎬</span> <strong>B-roll:</strong> เดินข้ามสะพานไม้ POV / น้ำ Brenta ไหล / วิวจากสะพาน</div>
+</div>
+</div>
+
+<div class="spot both-priority">
+<div class="spot-name">📍 Cortina d'Ampezzo — Dolomite Peaks + Enrosadira</div>
+<div class="spot-time">⏰ ~15:00-19:49 sunset | ⭐ TOP 3 SHOT! Enrosadira sunset!</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type video">🎬 B-roll</span><span class="type vlog">🎙 Vlog</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V ⭐ ทั้ง 3 เลนส์!</div><div class="b-lens">24-70mm → town + peaks default<br>70-200mm → compress peaks หลังเมือง<br>35mm f/1.4 → street Cortina + portrait กับ Fur</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1</div><div class="b-lens">16mm → wide dramatic peaks + timelapse sunset</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo (บ่าย):</strong> Corso Italia + peaks → 70-200mm compress เมือง+เขา</div>
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo (portrait):</strong> ⭐ Fur ขาว + Dolomites หิมะ → 35mm f/1.4 = editorial fashion shot!</div>
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo (sunset):</strong> ⭐ ENROSADIRA 19:30-19:49 เขาเปลี่ยนสีชมพู-ส้ม → A7V+70-200mm</div>
+<div class="shot-item"><span class="shot-icon">🎬</span> <strong>B-roll:</strong> Timelapse เขาเปลี่ยนสี (ZV-E1+16mm บน mini tripod) / เดินใน Cortina หิมะ</div>
+<div class="shot-item"><span class="shot-icon">🎙</span> <strong>Vlog:</strong> "Dolomites ติดลบ กับ Fur ขาว…" fashion + nature moment</div>
+</div>
+<div class="tip"><strong>⭐ ENROSADIRA = ONCE IN A LIFETIME!</strong> หา viewpoint หันตะวันตก (Tofane/Pomagagnon) ก่อน 19:00 | A7V+70-200 = peaks เปลี่ยนสี | ZV-E1+16mm = timelapse | ⚠️ หนาวมาก! แบตเตอรี่สำรองใส่กระเป๋าอุ่น ความเย็นกินแบตเร็ว!</div>
+</div>
+
+</div></div>
+</section>
+
+<!-- ============ DAY 8 ============ -->
+<section class="day" id="d8">
+<div class="day-top" onclick="this.parentElement.classList.toggle('open')">
+<div class="day-badge">D8</div>
+<div><h3>Lake Garda → Milan</h3><div class="meta">15 เม.ย. — Sirmione Castle · Bergamo · Milan Duomo Sunset</div></div>
+<svg class="chev" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+</div>
+<div class="day-body"><div class="day-inner">
+
+<div class="spot">
+<div class="spot-name">📍 Sirmione — Rocca Scaligera + Lake Garda</div>
+<div class="spot-time">⏰ ~13:00-15:00 (2 ชม.) | บ่ายต้น ปราสาทสะท้อนน้ำ</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type video">🎬 B-roll</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V</div><div class="b-lens">24-70mm → ปราสาท+ทะเลสาบ<br>70-200mm → Alps ไกลหลังทะเลสาบ</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1</div><div class="b-lens">16mm → wide castle + lake dramatic</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> ปราสาท approach จากสะพานชัก + สะท้อน moat</div>
+<div class="shot-item"><span class="shot-icon">🎬</span> <strong>B-roll:</strong> น้ำ Garda สีฟ้าเทอร์ควอยซ์ / เดินเข้าปราสาท</div>
+</div>
+</div>
+
+<div class="spot both-priority">
+<div class="spot-name">📍 Milan Duomo — Sunset + Blue Hour</div>
+<div class="spot-time">⏰ ~18:30-20:20 | ⭐ TOP 4 SHOT! Sunset → Blue Hour</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type video">🎬 B-roll</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V</div><div class="b-lens">24-70mm wide → Duomo full facade<br>70-200mm → spires + Madonnina detail</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1</div><div class="b-lens">16mm → ultra wide Duomo + piazza + timelapse sunset→blue hour</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo (sunset):</strong> Facade หันตะวันตก → เรืองทอง 19:50 = สุดยอด!</div>
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo (blue hour):</strong> 20:00-20:20 → Duomo + ท้องฟ้าน้ำเงินเข้ม 135 spires!</div>
+<div class="shot-item"><span class="shot-icon">🎬</span> <strong>B-roll:</strong> Timelapse golden→blue hour / คนเดินผ่าน piazza / ไฟเริ่มเปิด</div>
+</div>
+<div class="tip"><strong>⭐ ถึง ~18:30 = PERFECT!</strong> ตั้ง ZV-E1 timelapse → ถ่าย A7V photo ขณะรอ sunset จนถึง blue hour</div>
+</div>
+
+</div></div>
+</section>
+
+<!-- ============ DAY 9 ============ -->
+<section class="day" id="d9">
+<div class="day-top" onclick="this.parentElement.classList.toggle('open')">
+<div class="day-badge">D9</div>
+<div><h3>Milan Full Day</h3><div class="meta">16 เม.ย. — La Scala · Galleria · Duomo · Shopping → สนามบิน 14:05</div></div>
+<svg class="chev" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+</div>
+<div class="day-body"><div class="day-inner">
+
+<div class="spot both-priority">
+<div class="spot-name">📍 Galleria Vittorio Emanuele II — Glass Dome</div>
+<div class="spot-time">⏰ ~09:30-10:30 | เช้า = คนน้อย + แสงลอดกระจกสวย!</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type video">🎬 B-roll</span><span class="type vlog">🎙 Vlog</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V</div><div class="b-lens">24-70mm wide → arcade perspective<br>50mm f/1.2 → mosaic floor + shop fronts bokeh</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1 ⭐</div><div class="b-lens">16mm → ถ่ายตรงขึ้นโดมกระจก 8 เหลี่ยม = MUST!</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> ⭐ ZV-E1+16mm ถ่ายตรงขึ้นโดมกระจก = เพดานถูกถ่ายมากที่สุดในโลก!</div>
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> Arcade perspective receding → 24-70 at 24mm</div>
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> Mosaic กระทิง (หมุนส้นเท้าบนอัณฑะ = โชคดี!) → 50mm detail</div>
+<div class="shot-item"><span class="shot-icon">🎬</span> <strong>B-roll:</strong> Tilt up จากพื้น mosaic สู่โดมกระจก / แสงลอดเพดาน</div>
+<div class="shot-item"><span class="shot-icon">🎙</span> <strong>Vlog:</strong> "อาคารกระจกอายุ 100+ ปี" + หมุนส้นเท้ากระทิง</div>
+</div>
+<div class="tip"><strong>💡 ก่อน 10:00 = คนน้อย!</strong> แสงเช้าลอดกระจกสร้างลำแสงศักดิ์สิทธิ์ — มาเร็วได้ composition สะอาด</div>
+</div>
+
+<div class="spot">
+<div class="spot-name">📍 Milan Duomo — Interior + Rooftop</div>
+<div class="spot-time">⏰ ~10:30-11:30 | ข้างใน = stained glass + rooftop = spire forest</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type video">🎬 B-roll</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V</div><div class="b-lens">24-70mm → nave interior + rooftop panorama<br>50mm f/1.2 → stained glass close-up (high ISO)</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1</div><div class="b-lens">16mm → ultra wide nave + rooftop spires + Alps view</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo (inside):</strong> Nave perspective + stained glass แสงสีตกบนเสา → high ISO no flash!</div>
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo (rooftop):</strong> ป่ายอดแหลม marble + Madonnina ทอง + Alps ไกล</div>
+<div class="shot-item"><span class="shot-icon">🎬</span> <strong>B-roll:</strong> Tilt up เสา Gothic / แสงสี stained glass / เดินท่ามกลาง spires</div>
+</div>
+</div>
+
+<div class="spot">
+<div class="spot-name">📍 La Rinascente Rooftop — Hidden Gem!</div>
+<div class="spot-time">⏰ ~11:30-12:00 | ระดับตากับ Duomo spires ฟรี!</div>
+<div class="types"><span class="type photo">📸 Photo</span><span class="type vlog">🎙 Vlog</span></div>
+<div class="gear-row">
+<div class="gr body-a"><div class="b-label">A7V</div><div class="b-lens">35mm f/1.4 → intimate spire detail ใกล้แค่เอื้อม<br>50mm f/1.2 → gargoyle + statue bokeh</div></div>
+<div class="gr body-z"><div class="b-label">ZV-E1</div><div class="b-lens">16mm → wide view Duomo + piazza from terrace</div></div>
+</div>
+<div class="shots">
+<div class="shot-item"><span class="shot-icon">📸</span> <strong>Photo:</strong> ⭐ Duomo spires ระดับตา → perspective UNIQUE ต่างจากพื้น!</div>
+<div class="shot-item"><span class="shot-icon">🎙</span> <strong>Vlog:</strong> "มุมลับดู Duomo ไม่ต้องซื้อตั๋ว" + กาแฟ closing shot ของทริป</div>
+</div>
+<div class="tip"><strong>💡 Closing shot ของทริป!</strong> สั่งกาแฟ + ถ่ายรูปกับ Duomo spires ใกล้แค่มือเดียว = จบทริปแบบสวยๆ ก่อนไปสนามบิน</div>
+</div>
+
+</div></div>
+</section>
+
+<!-- BOTTOM NAV -->
+<nav class="bnav">
+<button class="nb" onclick="go('#gear')">📷 Gear</button>
+<button class="nb" onclick="go('#d2')">D2</button>
+<button class="nb" onclick="go('#d3')">D3</button>
+<button class="nb" onclick="go('#d4')">D4</button>
+<button class="nb" onclick="go('#d5')">D5</button>
+<button class="nb" onclick="go('#d6')">D6</button>
+<button class="nb" onclick="go('#d7')">D7</button>
+<button class="nb" onclick="go('#d8')">D8</button>
+<button class="nb" onclick="go('#d9')">D9</button>
+</nav>
+
+<script>
+function go(s){
+  const el=document.querySelector(s);
+  if(!el)return;
+  if(el.classList.contains('day')&&!el.classList.contains('open'))el.classList.add('open');
+  el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body>
+</html>
